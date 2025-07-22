@@ -10,7 +10,6 @@ module CryptKeeper
       end
 
       def load(value)
-        self.encryptor.rotate cipher: 'aes-256-cbc' if !self.encryptor.instance_variable_get(:@rotations).map{|x| x.instance_variable_get(:@cipher)}.include?('aes-256-cbc')
         if value.blank? || CryptKeeper.stub_encryption?
           value
         else
